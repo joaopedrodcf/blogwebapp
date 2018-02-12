@@ -10,11 +10,13 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter 
 @Setter 
 @NoArgsConstructor
+@ToString
 public class Post {
 	
 	@Id
@@ -23,7 +25,6 @@ public class Post {
 	private long id;
 	
 	@Column(nullable = false)
-	@Setter
 	private String title;
 	
 	@Column(nullable = false)

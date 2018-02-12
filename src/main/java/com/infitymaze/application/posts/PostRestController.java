@@ -67,7 +67,7 @@ public class PostRestController {
 	}
 
 	// update post info
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
 		Post currentPost = postRepository.findById(id);
 
