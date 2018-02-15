@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class PostRestController {
 
 	// Get all posts
 	@GetMapping
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<List<Post>> getAllPosts() {
 
 		List<Post> posts = (List<Post>) postRepository.findAll();
@@ -39,6 +41,7 @@ public class PostRestController {
 
 	// Delete all posts
 	@DeleteMapping
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Void> deleteAllPosts() {
 
 		postRepository.deleteAll();
@@ -48,6 +51,7 @@ public class PostRestController {
 
 	// insert post
 	@PostMapping
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Void> insertPost(@RequestBody Post post) {
 
 		postRepository.save(post);
@@ -57,6 +61,7 @@ public class PostRestController {
 
 	// get post by id
 	@GetMapping("/{id}")
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Post> getPost(@PathVariable Long id) {
 		Post post = postRepository.findById(id);
 
@@ -68,6 +73,7 @@ public class PostRestController {
 
 	// update post info
 	@PutMapping("/{id}")
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
 		Post currentPost = postRepository.findById(id);
 
@@ -85,6 +91,7 @@ public class PostRestController {
 
 	// delete post
 	@DeleteMapping("/{id}")
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Void> deletePost(@PathVariable Long id) {
 
 		Post post = postRepository.findById(id);
