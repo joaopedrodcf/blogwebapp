@@ -8,7 +8,7 @@ public interface PostRepository extends CrudRepository<Post, Long>{
 
 	Optional<Post> findByTitle(String title);
 	
-	Optional<Post> findByPostType(EnumPostType postType);
+	Optional<Post> findByType(EnumPostType Type);
 	
 	Post findById(long id);
 	
