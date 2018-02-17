@@ -32,12 +32,12 @@ public class Post {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private EnumPostType postType;
+	private EnumPostType type;
 	
 	public Post(String title, String content, EnumPostType postType) {
 		this.title = title;
 		this.content = content;
-		this.postType = postType;
+		this.type = postType;
 	}
 
 }
