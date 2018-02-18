@@ -1,5 +1,5 @@
 package com.infitymaze.application.posts;
 
-public enum EnumType {
+public enum EnumPostType {
 	REGULAR,IMPORTANT,FLASHNEWS;
 }
