@@ -20,23 +20,24 @@ public class DemoApplication implements CommandLineRunner {
 	private PostTypeRepository postTypeRepository;
 
 	public static void main(String[] args) throws Exception {
-        SpringApplication.run(DemoApplication.class, args);
-    }
+		SpringApplication.run(DemoApplication.class, args);
+	}
 
 	@Override
 	public void run(String... args) throws Exception {
 		postRepository.deleteAllInBatch();
 		postTypeRepository.deleteAllInBatch();
-		
-		PostType important = new PostType(1,"Important");
-		PostType generic = new PostType(2,"Generic");
-		PostType flash = new PostType(3,"Flash");
-		
+
+		PostType important = new PostType(1, "Important");
+		PostType generic = new PostType(2, "Generic");
+		PostType flash = new PostType(3, "Flash");
+
+		Post manga = new Post("Manga", "This is a content about manga", important);
+
 		postTypeRepository.save(important);
 		postTypeRepository.save(generic);
 		postTypeRepository.save(flash);
+		postRepository.save(manga);
 	}
-	
-	
 
 }

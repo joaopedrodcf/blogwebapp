@@ -7,10 +7,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.infitymaze.application.posts.Post;
 
 import lombok.Getter;
@@ -34,7 +34,8 @@ public class PostType {
 
 	@OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            mappedBy = "postType")
+            mappedBy = "type")
+	@JsonManagedReference
 	private Set<Post> posts = new HashSet<>();
 
 	public PostType(long id, String type) {
