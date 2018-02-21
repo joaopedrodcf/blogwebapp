@@ -37,12 +37,12 @@ public class Post {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "type_id", nullable = false)
-	private PostType postType;
+	private PostType type;
 
-	public Post(String title, String content,PostType postType) {
+	public Post(String title, String content,PostType type) {
 		this.title = title;
 		this.content = content;
-		this.postType = postType;
+		this.type = type;
 	}
 
 }
