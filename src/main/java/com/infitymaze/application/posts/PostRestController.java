@@ -63,7 +63,7 @@ public class PostRestController {
 	@GetMapping("/{id}")
 	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Post> getPost(@PathVariable Long id) {
-		Post post = postRepository.findById(id);
+		Post post = postRepository.findOne(id);
 
 		if (post == null)
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
@@ -75,7 +75,7 @@ public class PostRestController {
 	@PutMapping("/{id}")
 	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
-		Post currentPost = postRepository.findById(id);
+		Post currentPost = postRepository.findOne(id);
 
 		if (currentPost == null)
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
@@ -94,7 +94,7 @@ public class PostRestController {
 	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Void> deletePost(@PathVariable Long id) {
 
-		Post post = postRepository.findById(id);
+		Post post = postRepository.findOne(id);
 
 		if (post == null)
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
