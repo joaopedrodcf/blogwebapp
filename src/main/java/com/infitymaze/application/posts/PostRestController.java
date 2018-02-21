@@ -81,7 +81,7 @@ public class PostRestController {
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 
 		currentPost.setContent(post.getContent());
-		currentPost.setType(post.getType());
+		currentPost.setPostType(post.getPostType());
 		currentPost.setTitle(post.getTitle());
 
 		postRepository.save(currentPost);
