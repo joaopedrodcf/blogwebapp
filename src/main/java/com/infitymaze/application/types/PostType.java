@@ -1,15 +1,16 @@
 package com.infitymaze.application.types;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.infitymaze.application.posts.Post;
 
@@ -22,7 +23,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@Table(name = "type")
 public class PostType {
 
 	@Id
@@ -32,17 +33,29 @@ public class PostType {
 	@Column(nullable = false)
 	private String type;
 
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "type")
+	// important for bidirectional relationship
+	@OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
 	@JsonManagedReference
-	private Set<Post> posts = new HashSet<>();
+	private List<Post> posts = new ArrayList<>();
 
 	public PostType(long id, String type) {
 		this.id = id;
 		this.type = type;
-	};
+	}
 
+	public void addPost(Post post) {
+		posts.add(post);
+		post.setType(this);
+	}
 
+	public void removePost(Post post) {
+		posts.add(post);
+		post.setType(null);
+	}
+
+	@Override
+	public String toString() {
+		return "PostType [id=" + id + ", type=" + type + "]";
+	}
 
 }

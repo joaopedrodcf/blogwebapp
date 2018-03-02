@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,16 +23,26 @@ public class PostTypeRestController {
 		this.postTypeRepository = postTypeRepository;
 	}
 
+	// insert post
+	@PostMapping
+	@CrossOrigin(origins = { "http://localhost:3000" })
+	public ResponseEntity<Void> insertPostType(@RequestBody PostType postType) {
+
+		postTypeRepository.saveAndFlush(postType);
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
+
+	}
+	
 	// Get all posts
 	@GetMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
-	public ResponseEntity<List<PostType>> getAllPosts() {
+	@CrossOrigin(origins = {"http://localhost:3000"})
+	public ResponseEntity<List<PostType>> getAllPostTypes() {
 
-		List<PostType> posts = postTypeRepository.findAll();
+		List<PostType> postTypes = (List<PostType>) postTypeRepository.findAll();
 
-		if (posts == null)
+		if (postTypes == null)
 			return new ResponseEntity<List<PostType>>(HttpStatus.NO_CONTENT);
 
-		return new ResponseEntity<List<PostType>>(posts, HttpStatus.OK);
+		return new ResponseEntity<List<PostType>>(postTypes, HttpStatus.OK);
 	}
 }

@@ -2,13 +2,14 @@ package com.infitymaze.application.posts;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.infitymaze.application.types.PostType;
 
 import lombok.Getter;
@@ -21,6 +22,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+@Table(name = "post")
 public class Post {
 
 	@Id
@@ -34,8 +36,8 @@ public class Post {
 	@Column(nullable = false)
 	private String content;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "type_id", nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "type_id")
 	@JsonBackReference
 	private PostType type;
 	

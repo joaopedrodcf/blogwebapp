@@ -35,6 +35,7 @@ public class PostRestController {
 
 		if (posts == null)
 			return new ResponseEntity<List<Post>>(HttpStatus.NO_CONTENT);
+		
 
 		return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 	}
@@ -54,7 +55,7 @@ public class PostRestController {
 	@CrossOrigin(origins = {"http://localhost:3000"})
 	public ResponseEntity<Void> insertPost(@RequestBody Post post) {
 
-		postRepository.save(post);
+		postRepository.saveAndFlush(post);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 
 	}
