@@ -6,23 +6,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.infitymaze.application.types.PostType;
+import com.infitymaze.application.types.Type;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
-@Table(name = "post")
 public class Post {
 
 	@Id
@@ -39,9 +33,9 @@ public class Post {
 	@ManyToOne
     @JoinColumn(name = "type_id")
 	@JsonBackReference
-	private PostType type;
+	private Type type;
 	
-	public Post(String title, String content,PostType type) {
+	public Post(String title, String content,Type type) {
 		this.title = title;
 		this.content = content;
 		this.type = type;

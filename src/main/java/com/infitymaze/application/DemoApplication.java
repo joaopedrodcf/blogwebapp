@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.infitymaze.application.posts.Post;
 import com.infitymaze.application.posts.PostRepository;
-import com.infitymaze.application.types.PostType;
-import com.infitymaze.application.types.PostTypeRepository;
+import com.infitymaze.application.types.Type;
+import com.infitymaze.application.types.TypeRepository;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -19,7 +19,7 @@ public class DemoApplication implements CommandLineRunner {
 	private PostRepository postRepository;
 
 	@Autowired
-	private PostTypeRepository postTypeRepository;
+	private TypeRepository postTypeRepository;
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(DemoApplication.class, args);
@@ -30,7 +30,7 @@ public class DemoApplication implements CommandLineRunner {
 		postRepository.deleteAllInBatch();
 		postTypeRepository.deleteAllInBatch();
 
-		PostType important = new PostType(1, "Important");
+		Type important = new Type(1, "Important");
 
 		Post manga = new Post("Manga", "This is a content about manga",important);
 		

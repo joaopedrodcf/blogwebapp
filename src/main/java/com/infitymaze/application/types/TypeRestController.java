@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/type")
-public class PostTypeRestController {
+public class TypeRestController {
 
-	private final PostTypeRepository postTypeRepository;
+	private final TypeRepository TypeRepository;
 
 	@Autowired
-	PostTypeRestController(PostTypeRepository postTypeRepository) {
-		this.postTypeRepository = postTypeRepository;
+	TypeRestController(TypeRepository postTypeRepository) {
+		this.TypeRepository = postTypeRepository;
 	}
 
 	// insert post
 	@PostMapping
 	@CrossOrigin(origins = { "http://localhost:3000" })
-	public ResponseEntity<Void> insertPostType(@RequestBody PostType postType) {
+	public ResponseEntity<Void> insertPostType(@RequestBody Type type) {
 
-		postTypeRepository.saveAndFlush(postType);
+		TypeRepository.saveAndFlush(type);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 
 	}
@@ -36,13 +36,13 @@ public class PostTypeRestController {
 	// Get all posts
 	@GetMapping
 	@CrossOrigin(origins = {"http://localhost:3000"})
-	public ResponseEntity<List<PostType>> getAllPostTypes() {
+	public ResponseEntity<List<Type>> getAllPostTypes() {
 
-		List<PostType> postTypes = (List<PostType>) postTypeRepository.findAll();
+		List<Type> types = (List<Type>) TypeRepository.findAll();
 
-		if (postTypes == null)
-			return new ResponseEntity<List<PostType>>(HttpStatus.NO_CONTENT);
+		if (types == null)
+			return new ResponseEntity<List<Type>>(HttpStatus.NO_CONTENT);
 
-		return new ResponseEntity<List<PostType>>(postTypes, HttpStatus.OK);
+		return new ResponseEntity<List<Type>>(types, HttpStatus.OK);
 	}
 }

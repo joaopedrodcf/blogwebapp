@@ -8,23 +8,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.infitymaze.application.posts.Post;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@Table(name = "type")
-public class PostType {
+public class Type {
 
 	@Id
 	@Setter(lombok.AccessLevel.PROTECTED)
@@ -38,7 +33,7 @@ public class PostType {
 	@JsonManagedReference
 	private List<Post> posts = new ArrayList<>();
 
-	public PostType(long id, String type) {
+	public Type(long id, String type) {
 		this.id = id;
 		this.type = type;
 	}
@@ -51,11 +46,6 @@ public class PostType {
 	public void removePost(Post post) {
 		posts.add(post);
 		post.setType(null);
-	}
-
-	@Override
-	public String toString() {
-		return "PostType [id=" + id + ", type=" + type + "]";
 	}
 
 }
