@@ -15,34 +15,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.infitymaze.application.types.Type;
+import com.infitymaze.application.types.TypeRepository;
+
 @RestController
 @RequestMapping("/post")
 public class PostRestController {
 
 	private final PostRepository postRepository;
 
+	private final TypeRepository typeRepository;
+
 	@Autowired
-	PostRestController(PostRepository postRepository) {
+	PostRestController(PostRepository postRepository, TypeRepository typeRepository) {
 		this.postRepository = postRepository;
+		this.typeRepository = typeRepository;
 	}
 
 	// Get all posts
 	@GetMapping
-	@CrossOrigin(origins = {"http://localhost:3000"})
+	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<List<Post>> getAllPosts() {
 
 		List<Post> posts = (List<Post>) postRepository.findAll();
 
 		if (posts == null)
 			return new ResponseEntity<List<Post>>(HttpStatus.NO_CONTENT);
-		
 
 		return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 	}
 
 	// Delete all posts
 	@DeleteMapping
-	@CrossOrigin(origins = {"http://localhost:3000"})
+	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> deleteAllPosts() {
 
 		postRepository.deleteAll();
@@ -52,17 +57,23 @@ public class PostRestController {
 
 	// insert post
 	@PostMapping
-	@CrossOrigin(origins = {"http://localhost:3000"})
+	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> insertPost(@RequestBody Post post) {
 
-		postRepository.saveAndFlush(post);
+		Type type = post.getType();
+
+		if ((type = typeRepository.findByType(type.getType())) != null)
+			post.setType(type);
+
+		typeRepository.save(post.getType());
+		postRepository.save(post);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 
 	}
 
 	// get post by id
 	@GetMapping("/{id}")
-	@CrossOrigin(origins = {"http://localhost:3000"})
+	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Post> getPost(@PathVariable Long id) {
 		Post post = postRepository.findOne(id);
 
@@ -74,7 +85,7 @@ public class PostRestController {
 
 	// update post info
 	@PutMapping("/{id}")
-	@CrossOrigin(origins = {"http://localhost:3000"})
+	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
 		Post currentPost = postRepository.findOne(id);
 
@@ -92,7 +103,7 @@ public class PostRestController {
 
 	// delete post
 	@DeleteMapping("/{id}")
-	@CrossOrigin(origins = {"http://localhost:3000"})
+	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> deletePost(@PathVariable Long id) {
 
 		Post post = postRepository.findOne(id);

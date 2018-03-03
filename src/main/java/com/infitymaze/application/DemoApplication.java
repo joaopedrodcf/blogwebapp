@@ -28,7 +28,7 @@ public class DemoApplication implements CommandLineRunner {
 		postRepository.deleteAllInBatch();
 		typeRepository.deleteAllInBatch();
 
-		Type important = new Type(1, "Important");
+		Type important = new Type(1,"Important");
 
 		Post manga = new Post("Manga", "This is a content about manga",important);
 		
