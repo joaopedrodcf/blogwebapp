@@ -32,7 +32,6 @@ public class PostRestController {
 		this.typeRepository = typeRepository;
 	}
 
-	// Get all posts
 	@GetMapping
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<List<Post>> getAllPosts() {
@@ -45,7 +44,6 @@ public class PostRestController {
 		return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 	}
 
-	// Delete all posts
 	@DeleteMapping
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> deleteAllPosts() {
@@ -55,7 +53,6 @@ public class PostRestController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	// insert post
 	@PostMapping
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> insertPost(@RequestBody Post post) {
@@ -71,7 +68,6 @@ public class PostRestController {
 
 	}
 
-	// get post by id
 	@GetMapping("/{id}")
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Post> getPost(@PathVariable Long id) {
@@ -83,7 +79,6 @@ public class PostRestController {
 		return new ResponseEntity<Post>(post, HttpStatus.OK);
 	}
 
-	// update post info
 	@PutMapping("/{id}")
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
@@ -101,7 +96,6 @@ public class PostRestController {
 		return new ResponseEntity<Post>(HttpStatus.OK);
 	}
 
-	// delete post
 	@DeleteMapping("/{id}")
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> deletePost(@PathVariable Long id) {
@@ -112,6 +106,7 @@ public class PostRestController {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 
 		postRepository.delete(post);
+		
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
