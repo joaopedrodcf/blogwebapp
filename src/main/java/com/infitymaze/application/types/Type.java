@@ -20,11 +20,11 @@ public class Type {
 	private long id;
 
 	@Column(nullable = false)
-	private String type;
+	private String name;
 
-	public Type(long id, String type) {
+	public Type(long id, String name) {
 		this.id = id;
-		this.type = type;
+		this.name = name;
 	}
 
 }

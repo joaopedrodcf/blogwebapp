@@ -2,6 +2,8 @@ package com.infitymaze.application.types;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/type")
 public class TypeRestController {
 
 	private final TypeRepository typeRepository;
 
+	private static final Logger logger = LogManager.getLogger(TypeRestController.class);
+	
 	@Autowired
 	TypeRestController(TypeRepository postTypeRepository) {
 		this.typeRepository = postTypeRepository;
@@ -50,7 +55,7 @@ public class TypeRestController {
 	@PostMapping
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Void> insertType(@RequestBody Type type) {
-
+		logger.info(type);
 		typeRepository.save(type);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 
@@ -71,13 +76,13 @@ public class TypeRestController {
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<Type> updateType(@PathVariable Long id, @RequestBody Type type) {
 		Type currentType = typeRepository.findOne(id);
-
+		
 		if (currentType == null)
 			return new ResponseEntity<Type>(HttpStatus.NOT_FOUND);
-
-		currentType.setType(type.getType());
+		
+		currentType.setName(type.getName());
 		typeRepository.save(currentType);
-
+		
 		return new ResponseEntity<Type>(HttpStatus.OK);
 	}
 

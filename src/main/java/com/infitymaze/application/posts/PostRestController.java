@@ -59,7 +59,7 @@ public class PostRestController {
 
 		Type type = post.getType();
 
-		if ((type = typeRepository.findByType(type.getType())) != null)
+		if ((type = typeRepository.findByName(type.getName())) != null)
 			post.setType(type);
 
 		typeRepository.save(post.getType());
