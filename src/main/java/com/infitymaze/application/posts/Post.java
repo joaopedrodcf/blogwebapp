@@ -27,14 +27,18 @@ public class Post {
 
 	@Column(nullable = false)
 	private String content;
+	
+	@Column(nullable = false)
+	private String image;
 
 	@ManyToOne
 	private Type type;
 	
-	public Post(String title, String content,Type type) {
+	public Post(String title, String content,Type type,String image) {
 		this.title = title;
 		this.content = content;
 		this.type = type;
+		this.image = image;
 	}
 
 }

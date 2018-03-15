@@ -90,7 +90,8 @@ public class PostRestController {
 		currentPost.setContent(post.getContent());
 		currentPost.setType(post.getType());
 		currentPost.setTitle(post.getTitle());
-
+		currentPost.setImage(post.getImage());
+		
 		postRepository.save(currentPost);
 
 		return new ResponseEntity<Post>(HttpStatus.OK);
