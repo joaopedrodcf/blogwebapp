@@ -2,6 +2,7 @@ package com.infitymaze.application.posts;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infitymaze.application.types.Type;
 import com.infitymaze.application.types.TypeRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @RestController
 @RequestMapping("/post")
@@ -26,6 +30,8 @@ public class PostRestController {
 
 	private final TypeRepository typeRepository;
 
+	private static final Logger logger = LogManager.getLogger(PostRestController.class);
+	
 	@Autowired
 	PostRestController(PostRepository postRepository, TypeRepository typeRepository) {
 		this.postRepository = postRepository;
@@ -111,4 +117,17 @@ public class PostRestController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
+	// Types if only the id works but if only the name don't work
+	@PostMapping("/filter")
+	@CrossOrigin(origins = { "http://localhost:3000" })
+	public ResponseEntity<List<Post>> filterPosts(@RequestParam String name,@RequestBody Type [] types) {
+		
+		logger.info(name);
+		List<Post> posts = (List<Post>) postRepository.filterPosts(name,types);
+
+		if (posts.size() < 0)
+			return new ResponseEntity<List<Post>>(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<List<Post>>(posts,HttpStatus.OK);
+	}
 }
