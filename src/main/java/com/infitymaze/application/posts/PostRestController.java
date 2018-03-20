@@ -1,5 +1,6 @@
 package com.infitymaze.application.posts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -122,8 +123,12 @@ public class PostRestController {
 	@CrossOrigin(origins = { "http://localhost:3000" })
 	public ResponseEntity<List<Post>> filterPosts(@RequestParam String name,@RequestBody Type [] types) {
 		
-		logger.info(name);
-		List<Post> posts = (List<Post>) postRepository.filterPosts(name,types);
+		List<Post> posts = new ArrayList<Post>();
+		if(types.length == 0) {
+			posts = (List<Post>) postRepository.filterPostsByName(name);
+		}else{
+			posts = (List<Post>) postRepository.filterPostByNameAndType(name,types);
+		}
 
 		if (posts.size() < 0)
 			return new ResponseEntity<List<Post>>(HttpStatus.NOT_FOUND);
