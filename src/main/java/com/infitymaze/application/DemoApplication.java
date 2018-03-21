@@ -27,8 +27,6 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		postRepository.deleteAllInBatch();
-		typeRepository.deleteAllInBatch();
 
 		Type important = new Type(1, "Important");
 		Post manga = new Post("Lorem ipsum.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim blandit mauris, has egestas nibh efficitur at. Potentially suspend Ut.", important,

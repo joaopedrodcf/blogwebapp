@@ -3,8 +3,11 @@ package com.infitymaze.application.posts;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,8 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.infitymaze.application.types.Type;
 import com.infitymaze.application.types.TypeRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @RestController
 @RequestMapping("/post")
@@ -135,4 +136,17 @@ public class PostRestController {
 		
 		return new ResponseEntity<List<Post>>(posts,HttpStatus.OK);
 	}
+	
+	@GetMapping("/page")
+	@CrossOrigin(origins = { "http://localhost:3000" })
+	public ResponseEntity<Page<Post>> findPaginatedPost(@RequestParam int page, @RequestParam int size){
+		Page<Post> posts = postRepository.findAll(new PageRequest(page, size));
+		
+		if (posts.getSize() < 0)
+			return new ResponseEntity<Page<Post>>(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<Page<Post>>(posts,HttpStatus.OK);
+		
+	}
+	
 }
