@@ -121,7 +121,7 @@ public class PostRestController {
 	// Types if only the id works but if only the name don't work
 	@PostMapping("/filter")
 	@CrossOrigin(origins = { "http://localhost:3000" })
-	public ResponseEntity<List<Post>> filterPosts(@RequestParam String name,@RequestBody Type [] types) {
+	public ResponseEntity<List<Post>> filterPosts(@RequestParam String name,@RequestBody String [] types) {
 		
 		List<Post> posts = new ArrayList<Post>();
 		if(types.length == 0) {
