@@ -1,4 +1,4 @@
-package com.infitymaze.application.types;
+package com.infinitymaze.application.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

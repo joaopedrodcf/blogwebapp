@@ -1,4 +1,4 @@
-package com.infitymaze.application.posts;
+package com.infinitymaze.application.rest.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.infitymaze.application.types.Type;
-import com.infitymaze.application.types.TypeRepository;
+import com.infinitymaze.application.entities.Post;
+import com.infinitymaze.application.entities.Type;
+import com.infinitymaze.application.repositories.PostRepository;
+import com.infinitymaze.application.repositories.TypeRepository;
 
 @RestController
 @RequestMapping("/post")

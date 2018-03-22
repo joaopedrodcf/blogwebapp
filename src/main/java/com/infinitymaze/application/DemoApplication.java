@@ -1,18 +1,17 @@
-package com.infitymaze.application;
+package com.infinitymaze.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.context.annotation.ComponentScan;
 
-import com.infitymaze.application.posts.Post;
-import com.infitymaze.application.posts.PostRepository;
-import com.infitymaze.application.types.Type;
-import com.infitymaze.application.types.TypeRepository;
+import com.infinitymaze.application.entities.Post;
+import com.infinitymaze.application.entities.Type;
+import com.infinitymaze.application.repositories.PostRepository;
+import com.infinitymaze.application.repositories.TypeRepository;
 
 @SpringBootApplication
-@RequestMapping("/api")
 public class DemoApplication implements CommandLineRunner {
 
 	@Autowired
@@ -49,6 +48,7 @@ public class DemoApplication implements CommandLineRunner {
 		postRepository.save(update);
 		typeRepository.save(games);
 		postRepository.save(naruto);
+
 
 	}
 

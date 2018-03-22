@@ -1,4 +1,4 @@
-package com.infitymaze.application.ping;
+package com.infinitymaze.application.rest.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

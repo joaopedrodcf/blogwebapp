@@ -1,4 +1,4 @@
-package com.infitymaze.application.types;
+package com.infinitymaze.application.rest.controllers;
 
 import java.util.List;
 
@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.infinitymaze.application.entities.Type;
+import com.infinitymaze.application.repositories.TypeRepository;
 
 
 @RestController

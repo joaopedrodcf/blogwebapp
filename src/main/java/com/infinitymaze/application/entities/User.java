@@ -1,4 +1,4 @@
-package com.infinitymaze.appplication.users;
+package com.infinitymaze.application.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
