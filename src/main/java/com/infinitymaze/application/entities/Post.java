@@ -23,6 +23,9 @@ public class Post {
 	@Column(nullable = false)
 	private String title;
 
+	@Column(nullable = false,length = 3000)
+	private String description;
+	
 	@Column(nullable = false)
 	private String content;
 	
@@ -32,11 +35,12 @@ public class Post {
 	@ManyToOne
 	private Type type;
 	
-	public Post(String title, String content,Type type,String image) {
+	public Post(String title, String content,Type type,String image,String description) {
 		this.title = title;
 		this.content = content;
 		this.type = type;
 		this.image = image;
+		this.description=description;
 	}
 
 }
