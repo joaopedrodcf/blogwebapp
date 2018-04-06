@@ -23,10 +23,10 @@ public class Post {
 	@Column(nullable = false)
 	private String title;
 
-	@Column(nullable = false,length = 3000)
+	@Column(nullable = false)
 	private String description;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,length = 3000)
 	private String content;
 	
 	@Column(nullable = false)
