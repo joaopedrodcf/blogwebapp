@@ -24,6 +24,11 @@ This project uses lombok and because of that you need to install lombok in your 
 After that went into - C:\Users\<YOUR USER>\.m2\repository\org\projectlombok\lombok\1.16.20
 Just double click the lombok jar and click install in your eclipse.
 
+### Gmail
+To send emails and if you use two step authenticator you need to create an app password.
+https://security.google.com/settings/security/apppasswords
+Then put it in the props.
+
 ### Prerequisites
 
 You need a mysql DB (Used XAMPP for faster creation)
