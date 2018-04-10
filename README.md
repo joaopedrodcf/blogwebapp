@@ -12,12 +12,16 @@ git clone https://github.com/joaopedrodcf/blogwebapp.git
 ### Mysql
 Download xampp and start a mysql database
 
-Then update file application.properties
+Then before running the project in eclipse for example set custom enviroment variables
 
-spring.datasource.username=****
-spring.datasource.password=****
+Run configurations -> Enviroment
 
-With your credentials
+Set these
+
+SPRING_DATASOURCE_URL = ****
+SPRING_DATASOURCE_USERNAME = ****
+SPRING_DATASOURCE_PASSWORD = ****
+
 
 ### Lombok
 This project uses lombok and because of that you need to install lombok in your eclipse, the way I have done it was just maven install this project.
@@ -27,7 +31,11 @@ Just double click the lombok jar and click install in your eclipse.
 ### Gmail
 To send emails and if you use two step authenticator you need to create an app password.
 https://security.google.com/settings/security/apppasswords
-Then put it in the props.
+
+Then you just have to create more enviroment variables
+
+EMAIL_GMAIL = ****
+PASSWORD_GMAIL = ****
 
 ### Prerequisites
 
@@ -36,4 +44,6 @@ You need a mysql DB (Used XAMPP for faster creation)
 ## Built With
 
 * [spring-boot](https://github.com/spring-projects/spring-boot) - Spring Boot
+* [spring-data-jpa](https://github.com/spring-projects/spring-data-jpa) - Simplifies the development of creating a JPA-based data access layer.
+* [javamail](https://javaee.github.io/javamail/) - The JavaMail API provides a platform-independent and protocol-independent framework to build mail and messaging applications.
 * [lombok](https://github.com/rzwitserloot/lombok) - Very spicy additions to the Java programming language.
