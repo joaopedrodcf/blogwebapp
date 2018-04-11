@@ -31,6 +31,9 @@ public class Post {
 	
 	@Column(nullable = false)
 	private String image;
+	
+	@Column(nullable = false)
+	private long likes;
 
 	@ManyToOne
 	private Type type;
@@ -41,6 +44,7 @@ public class Post {
 		this.type = type;
 		this.image = image;
 		this.description=description;
+		this.likes=0;
 	}
 
 }

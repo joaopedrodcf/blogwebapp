@@ -151,4 +151,19 @@ public class PostRestController {
 		
 	}
 	
+	@PutMapping("like/{id}")
+	@CrossOrigin(origins = { "http://localhost:3000" })
+	public ResponseEntity<Post> updatelikePost(@PathVariable Long id) {
+		Post currentPost = postRepository.findOne(id);
+
+		if (currentPost == null)
+			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
+
+		currentPost.setLikes(currentPost.getLikes()+1);
+		
+		postRepository.save(currentPost);
+
+		return new ResponseEntity<Post>(HttpStatus.OK);
+	}
+	
 }
