@@ -10,7 +10,7 @@ public class PingRestController {
 	
 	@RequestMapping("/ping")
     @ResponseBody
-    @CrossOrigin(origins = {"http://localhost:3000"})
+    @CrossOrigin(origins = {"http://localhost:3000", "https://fierce-beach-47814.herokuapp.com"})
     String home() {
         return "Hello World!";
     }

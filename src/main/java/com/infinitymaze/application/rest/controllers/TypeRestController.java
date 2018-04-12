@@ -35,7 +35,7 @@ public class TypeRestController {
 	}
 
 	@GetMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<List<Type>> getAllTypes() {
 
 		List<Type> types = (List<Type>) typeRepository.findAll();
@@ -47,7 +47,7 @@ public class TypeRestController {
 	}
 	
 	@DeleteMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> deleteAllTypes() {
 
 		typeRepository.deleteAll();
@@ -56,7 +56,7 @@ public class TypeRestController {
 	}
 
 	@PostMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> insertType(@RequestBody Type type) {
 		logger.info(type);
 		typeRepository.save(type);
@@ -65,7 +65,7 @@ public class TypeRestController {
 	}
 
 	@GetMapping("/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Type> getType(@PathVariable Long id) {
 		Type type = typeRepository.findOne(id);
 
@@ -76,7 +76,7 @@ public class TypeRestController {
 	}
 
 	@PutMapping("/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Type> updateType(@PathVariable Long id, @RequestBody Type type) {
 		Type currentType = typeRepository.findOne(id);
 		
@@ -90,7 +90,7 @@ public class TypeRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> deleteType(@PathVariable Long id) {
 
 		Type type = typeRepository.findOne(id);

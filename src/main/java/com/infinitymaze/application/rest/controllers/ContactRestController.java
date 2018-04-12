@@ -20,7 +20,7 @@ public class ContactRestController {
 	private SendMailService sendMailService;
 
 	@PostMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> sendEmail(@RequestBody MessageDTO message) {
 
 		if(!sendMailService.sendMail(message)) {

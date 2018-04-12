@@ -43,7 +43,7 @@ public class PostRestController {
 	}
 
 	@GetMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com"  })
 	public ResponseEntity<List<Post>> getAllPosts() {
 
 		List<Post> posts = (List<Post>) postRepository.findAll();
@@ -55,7 +55,7 @@ public class PostRestController {
 	}
 
 	@DeleteMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> deleteAllPosts() {
 
 		postRepository.deleteAll();
@@ -64,7 +64,7 @@ public class PostRestController {
 	}
 
 	@PostMapping
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> insertPost(@RequestBody Post post) {
 
 		Type type = post.getType();
@@ -79,7 +79,7 @@ public class PostRestController {
 	}
 
 	@GetMapping("/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Post> getPost(@PathVariable Long id) {
 		Post post = postRepository.findOne(id);
 
@@ -90,7 +90,7 @@ public class PostRestController {
 	}
 
 	@PutMapping("/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
 		Post currentPost = postRepository.findOne(id);
 
@@ -108,7 +108,7 @@ public class PostRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> deletePost(@PathVariable Long id) {
 
 		Post post = postRepository.findOne(id);
@@ -123,7 +123,7 @@ public class PostRestController {
 
 	// Types if only the id works but if only the name don't work
 	@PostMapping("/filter")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<List<Post>> filterPosts(@RequestParam String name,@RequestBody String [] types) {
 		
 		List<Post> posts = new ArrayList<Post>();
@@ -140,7 +140,7 @@ public class PostRestController {
 	}
 	
 	@GetMapping("/page")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Page<Post>> findPaginatedPost(@RequestParam int page, @RequestParam int size){
 		Page<Post> posts = postRepository.findAll(new PageRequest(page, size));
 		
@@ -152,7 +152,7 @@ public class PostRestController {
 	}
 	
 	@PutMapping("like/{id}")
-	@CrossOrigin(origins = { "http://localhost:3000" })
+	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Post> updatelikePost(@PathVariable Long id) {
 		Post currentPost = postRepository.findOne(id);
 
