@@ -56,7 +56,7 @@ public class SendMailService {
 
 			Transport.send(msg);
 
-			System.out.println("Email Sent Successfully");
+			logger.info("Email Sent Successfully");
 
 		} catch (MessagingException e) {
 			logger.error(e.getMessage());
