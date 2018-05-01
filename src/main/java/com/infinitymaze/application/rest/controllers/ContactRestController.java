@@ -13,6 +13,7 @@ import com.infinitymaze.application.dto.MessageDTO;
 import com.infinitymaze.application.services.SendMailService;
 @RestController
 @RequestMapping("/contact")
+@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com/"  })
 public class ContactRestController {
 
 	
@@ -20,7 +21,6 @@ public class ContactRestController {
 	private SendMailService sendMailService;
 
 	@PostMapping
-	@CrossOrigin(origins = { "http://localhost:3000", "https://fierce-beach-47814.herokuapp.com" })
 	public ResponseEntity<Void> sendEmail(@RequestBody MessageDTO message) {
 
 		if(!sendMailService.sendMail(message)) {
