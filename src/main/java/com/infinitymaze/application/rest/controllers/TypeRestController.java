@@ -23,7 +23,7 @@ import com.infinitymaze.application.repositories.TypeRepository;
 
 @RestController
 @RequestMapping("/type")
-@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com/"  })
+@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com"  })
 public class TypeRestController {
 
 	private final TypeRepository typeRepository;

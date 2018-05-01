@@ -26,7 +26,7 @@ import com.infinitymaze.application.repositories.TypeRepository;
 
 @RestController
 @RequestMapping("/post")
-@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com/"  })
+@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com"  })
 public class PostRestController {
 
 	private final PostRepository postRepository;

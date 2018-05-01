@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com/"  })
+@CrossOrigin(origins = { "http://localhost:3000", "https://blog-react-demo.herokuapp.com"  })
 public class PingRestController {
 	
 	@RequestMapping("/ping")
